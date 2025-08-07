@@ -1,13 +1,15 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import { updateTask } from "../api/services";
 
 function TaskCard({ task }) {
-  const navigate = useNavigate(); //esto es para direcionar el id
+  const [completed, setCompleted] = useState(task.completed);
+  const navigate = useNavigate();
+
   return (
     <div
-      className="bg-zinc-950 p-4
-        hover:cursor-pointer hover:bg-gray-950"
+      className="bg-zinc-950 p-4 hover:cursor-pointer hover:bg-gray-950"
       onClick={() => {
         navigate(`/tasks/${task.id}`);
       }}
@@ -19,11 +21,11 @@ function TaskCard({ task }) {
           onClick={async (e) => {
             e.stopPropagation();
             const res = await updateTask(task.id, {
-              completed: !task.completed,
+              completed: !completed,
             });
 
-            if (res.status == 200) {
-              window.location.reload(); //CAMBIAR POR ESTADO
+            if (res.status === 200) {
+              setCompleted(!completed); 
             }
           }}
         >
@@ -34,7 +36,7 @@ function TaskCard({ task }) {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className={`w-6 h-6 ${task.completed ? "text-green-500" : ""}`}
+            className={`w-6 h-6 ${completed ? "text-green-500" : ""}`} 
           >
             <path
               strokeLinecap="round"

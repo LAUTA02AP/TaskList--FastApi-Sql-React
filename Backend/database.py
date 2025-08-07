@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship, declarative_base
 
-DATABASE_URL = "mysql+mysqlconnector://root:CQREwuGGTSgDsijXHwGIaYHNZSjunwRE@mysql.railway.internal:3306/railway"
+DATABASE_URL = "postgresql://postgres:WKZaAJmkGyaDMeajgRUmOKqBhZkmJxDu@switchyard.proxy.rlwy.net:47889/railway"
 
 engine = create_engine(DATABASE_URL)
 

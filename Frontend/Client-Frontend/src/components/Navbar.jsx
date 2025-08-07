@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom'
 function Navbar({}){
     return(
         <header className="flex justify-between items-center my-7">
-            <Link to ="/">
-                <h1>Task App</h1>
+            <Link to ="/" className='font-bold py-2 px-4 text-5xl '>
+                <h1 >Task App</h1>
             </Link>
         
 
